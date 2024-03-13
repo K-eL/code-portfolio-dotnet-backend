@@ -1,0 +1,8 @@
+{
+  "dotnet-test-explorer.autoWatch": true,
+  "dotnet-test-explorer.testProjectPath": "/tests/**/*Tests.csproj",
+  "dotnet-test-explorer.testArguments": "--no-build",
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.formatOnPaste": true,
+}
