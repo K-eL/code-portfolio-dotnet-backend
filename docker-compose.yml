@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  webapi:
+    build: .
+    command: ./.docker/start.sh
+    restart: unless-stopped
+    volumes:
+      - .:/app
+    ports:
+      - 5000:80
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_ENVIRONMENT=Development
