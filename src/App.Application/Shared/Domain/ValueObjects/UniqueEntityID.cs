@@ -4,10 +4,15 @@ namespace App.Application.Shared.Domain.ValueObjects
 	{
 		public UniqueEntityID(Guid value = default)
 		{
+			Value = Validate(value);
+		}
+
+		private Guid Validate(Guid value)
+		{
 			if (value == default || value == Guid.Empty)
 				value = Guid.NewGuid();
 
-			Value = value;
+			return value;
 		}
 
 		public Guid Value { get; private set; }

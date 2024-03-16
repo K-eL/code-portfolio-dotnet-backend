@@ -6,10 +6,21 @@ namespace App.Application.Modules.Category.Domain.ValueObjects
 	{
 		public CategoryName(string value)
 		{
+			Value = Validate(value);
+		}
+
+		private string Validate(string value)
+		{
 			if (string.IsNullOrWhiteSpace(value))
 				throw new EntityValidationException("Category name cannot be empty.");
 
-			Value = value;
+			if (value.Length > 100)
+				throw new EntityValidationException("Category name cannot have more than 100 characters.");
+
+			if (value.Length < 3)
+				throw new EntityValidationException("Category name cannot have less than 3 characters.");
+
+			return value.Trim();
 		}
 
 		public string Value { get; private set; }

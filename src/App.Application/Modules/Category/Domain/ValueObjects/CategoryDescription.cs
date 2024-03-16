@@ -6,6 +6,11 @@ namespace App.Application.Modules.Category.Domain.ValueObjects
 	{
 		public CategoryDescription(string value)
 		{
+			Value = Validate(value);
+		}
+
+		private string Validate(string value)
+		{
 			if (string.IsNullOrWhiteSpace(value))
 				throw new EntityValidationException("Category description cannot be empty.");
 
@@ -14,7 +19,7 @@ namespace App.Application.Modules.Category.Domain.ValueObjects
 					"Category description cannot have more than 500 characters."
 				);
 
-			Value = value;
+			return value.Trim();
 		}
 
 		public string Value { get; private set; }
